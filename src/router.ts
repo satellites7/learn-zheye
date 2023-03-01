@@ -6,6 +6,7 @@ import ColumnDetail from './views/ColumnDetail.vue'
 import CreatePost from './views/CreatePost.vue'
 import Signup from './views/Signup.vue'
 import store from './store'
+// test git
 const router = createRouter({
     history: createWebHashHistory(),
     routes: [
