@@ -13,6 +13,7 @@
             <li class="list-inline-item">
                 <DropDown :title="`你好${user.nickName}`" >
                     <DropDownItem><router-link to="/createPost" class="dropdown-item">新建文章</router-link></DropDownItem>
+                    <DropDownItem><router-link :to="`/column/${user.column}`" class="dropdown-item">我的专栏</router-link></DropDownItem>
                     <DropDownItem disabled><a class="dropdown-item" >编辑资料</a></DropDownItem>
                     <DropDownItem><a class="dropdown-item">退出登录</a></DropDownItem>
                 </DropDown>
