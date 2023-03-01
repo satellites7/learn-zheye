@@ -10,8 +10,8 @@ export interface RawDataProps<p=object> {
 export interface UserProps {
     isLogin: boolean,
     nickName?: string,
-    _id?: number,
-    column?: number,
+    _id?: string,
+    column?: string,
     token: string,
     email?: string
 }
@@ -35,13 +35,14 @@ export interface ColumnProps {
 }
 
 export interface PostProps {
-    _id: string;
+    _id?: string;
     title: string;
     excerpt?: string;
     content: string;
-    image?: ImageProps;
-    createdAt: string;
+    image?: ImageProps | string;
+    createdAt?: string;
     column: string;
+    author?: string;
 }
 
 export interface GlobalDataProps {
@@ -130,6 +131,9 @@ const store = createStore<GlobalDataProps>({
             return dispatch('login', loginData).then(() => {
                 return dispatch('fetchCurrentUser')
             })
+        },
+        createPost ({ commit }, postData) {
+            return postAndCommit('/posts', 'createPost', commit, postData)
         }
     },
     getters: {
