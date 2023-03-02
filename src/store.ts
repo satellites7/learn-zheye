@@ -79,17 +79,22 @@ const store = createStore<GlobalDataProps>({
         createPost (state, newPost: PostProps) {
             state.posts.push(newPost)
         },
+        // 获取专栏列表
         fetchColumns (state, rawData) {
+            console.log('fetchColumns', rawData)
             state.columns = rawData.data.list
         },
+        // 获取专栏详情
         fetchColumn (state, rawData) {
-            console.log(rawData)
             state.columns = [rawData.data]
         },
         fetchPosts (state, rawData) {
             console.log(rawData)
             state.posts = rawData.data.list
         },
+        // fetchPost (state, rawData) {
+        //     state.posts[rawData._id] = rawData.data
+        // },
         setLoading (state, status) {
             state.isLoading = status
         },
@@ -135,6 +140,9 @@ const store = createStore<GlobalDataProps>({
         createPost ({ commit }, postData) {
             return postAndCommit('/posts', 'createPost', commit, postData)
         }
+        // fetchPost ({ commit }, postId) {
+        //     return getAndCommit(`/posts/${postId}`, 'fetchPost', commit)
+        // }
     },
     getters: {
         getColumnById: (state) => (id: string) => {
